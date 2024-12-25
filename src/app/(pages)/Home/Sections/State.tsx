@@ -97,7 +97,7 @@ const State = () => {
             className="circle"
           >
             <h3 >
-              {count1}+
+              {count1}
             </h3>
             <p >
               {lang == "English" ? "my Age " : "العمر"}

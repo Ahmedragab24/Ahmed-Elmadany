@@ -46,3 +46,11 @@ export interface SoftSkills {
   icon: IconType;
   direction: "top" | "left" | "right" | "bottom";
 }
+
+export interface CustomerReviewProps {
+  id: number,
+  name: string
+  avatar: string
+  review: string
+  rating: number
+}

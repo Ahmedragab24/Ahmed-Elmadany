@@ -7,19 +7,21 @@ import Projects from "./Sections/Projects";
 import Education from "./Sections/Education";
 import Experience from "./Sections/Experience";
 import Contact from "./Sections/Contact";
-
+import { ReviewCarousel } from "./Sections/Reviews";
+import { reviews } from "@/constants";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <State />
-      <TechSkills/>
-      <SoftSkills/>
-      <Projects/>
-      <Education/>
-      <Experience/>
-      <Contact/>
+      <TechSkills />
+      <SoftSkills />
+      <Projects />
+      <Education />
+      <Experience />
+      <ReviewCarousel reviews={reviews} />
+      <Contact />
     </>
   );
 };

@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { aboutMe } from "@/constants";
 import { useLanguage } from "@/providers/LanguageContextProvider";
-import Typewriter from "typewriter-effect";
+import CustomTypewriter from "@/hooks/CustomTypewriter";
 
 const Hero = () => {
   const {
@@ -35,7 +35,7 @@ const Hero = () => {
       id="home"
       dir={lang == "English" ? "ltr" : "rtl"}
     >
-      <div className="container mt-[4rem] md:mt-0 flex flex-col-reverse md:flex-row md:items-center md:justify-between h-[100vh] md:h-[99vh]">
+      <div className="container mt-[4rem] md:mt-0 flex flex-col-reverse md:flex-row md:items-center md:justify-between md:h-[99vh]">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -53,16 +53,13 @@ const Hero = () => {
             <div className="flex gap-3 py-2 title font-bold justify-center md:justify-start items-center">
               <h1>{lang == "English" ? "I'm" : "أنا"}</h1>
               <div className="text-primary">
-                <Typewriter
-                  options={{
-                    strings: [
-                      lang == "English" ? name : arabicName,
-                      lang == "English" ? position : arabicPsition,
-                    ],
-                    autoStart: true,
-                    delay: 100,
-                    loop: true,
-                  }}
+                <CustomTypewriter
+                  strings={[
+                    lang === "English" ? name : arabicName,
+                    lang === "English" ? position : arabicPsition,
+                  ]}
+                  delay={100}
+                  loop={true}
                 />
               </div>
             </div>

@@ -18,7 +18,7 @@ interface Iprops {
   error: string | null;
 }
 
-const ProjectData = ({ data, isLoading, error }: Iprops) => {
+const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
@@ -35,7 +35,7 @@ const ProjectData = ({ data, isLoading, error }: Iprops) => {
 
       {error && <p className="text-center text-red-500">{error}</p>}
 
-      {!isLoading && !error && data && (
+      {!isLoading && !error && data && data.length > 0 && (
         <Carousel>
           <CarouselContent>
             {data.map((project) => (
