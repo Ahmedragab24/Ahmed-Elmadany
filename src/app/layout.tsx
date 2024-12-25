@@ -4,6 +4,7 @@ import "./globals.css";
 import ParticlesComponent from "@/components/ui/Particles";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { LanguageProvider } from "@/providers/LanguageContextProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const FontCairoPlay = Cairo_Play({
   variable: "--FontCairoPlay",
@@ -39,6 +40,7 @@ export default function RootLayout({
         >
           <LanguageProvider>
             {children}
+            <Toaster />
           </LanguageProvider>
         </ThemeProvider>
       </body>
