@@ -32,7 +32,7 @@ const Projects = () => {
           setError("Failed to fetch projects");
         }
 
-        setCategoriesData([...projectCategories]);
+        setCategoriesData(projectCategories ? (projectCategories as unknown as ICategories[]) : []);
       } catch (error) {
         setError(error instanceof Error ? error.message : String(error));
       } finally {
