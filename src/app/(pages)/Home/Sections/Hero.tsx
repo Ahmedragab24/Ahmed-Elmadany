@@ -40,7 +40,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className={`flex flex-col gap-2 text-center ${
+          className={`flex flex-col gap-2 text-center lg:mt-[5rem] ${
             lang == "English" ? "md:text-left" : "md:text-start"
           }`}
           data-aos="fade-up"

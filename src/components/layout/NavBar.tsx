@@ -23,10 +23,12 @@ import { ModeToggle } from "../ui/modeToggle";
 import SelectLang from "../ui/selectLang";
 import { MenuLink, NavLink } from "@/constants";
 import Logo from "../../../public/Logo.png";
+import { useLanguage } from "@/providers/LanguageContextProvider";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { lang } = useLanguage();
 
   // Handle scroll visibility
   const handleScroll = useCallback(() => {
@@ -45,11 +47,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`bg-background shadow-md fixed top-0 left-0 w-full transition-transform duration-300 z-50 ${
+      className={`bg-background shadow-md fixed top-0 left-0 w-full transition-transform duration-300 z-50 border-b border-secondary rounded-b-[2rem] md:rounded-b-[6rem]  ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="container">
+      <div className="container" dir={`${lang === "English" ? "ltr" : "rtl"}`}>
         <div className="flex justify-between h-16">
           {/* Logo and Main Navigation */}
           <div className="flex gap-x-6">
@@ -57,17 +59,19 @@ export default function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex gap-2">
                 <Image src={Logo} alt="Logo" width={48} height={32} />
-                <span className="text-2xl font-bold text-primary">Elmadany</span>
+                <span className="text-2xl font-bold text-primary">
+                  {lang == "English" ? "Elmadany" : "المدني"}
+                </span>
               </Link>
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden sm:flex sm:gap-x-8">
+            <div className="hidden sm:flex sm:gap-x-6">
               {MenuLink.map(({ Title, Url }) => (
                 <Link
                   key={Title}
                   href={Url}
-                  className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 duration-300 hover:text-primary"
+                  className="inline-flex items-center px-2 text-md font-medium text-gray-500 duration-300 hover:text-primary"
                 >
                   {Title}
                 </Link>
@@ -76,7 +80,7 @@ export default function Navbar() {
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-500">
+                    <NavigationMenuTrigger className="text-gray-500 text-md">
                       About me
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="flex flex-col gap-2">
@@ -106,10 +110,7 @@ export default function Navbar() {
           <div className="-mr-2 flex items-center sm:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                >
+                <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6 text-primary" aria-hidden="true" />
                 </Button>
               </DropdownMenuTrigger>

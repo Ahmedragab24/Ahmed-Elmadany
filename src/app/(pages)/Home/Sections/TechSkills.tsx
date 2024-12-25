@@ -51,7 +51,7 @@ const TechSkills = () => {
               </div>
             </div>
 
-            <div className="flex justify-center items-center gap-x-3 ms-20">
+            <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
                 <SquareTerminal className="text-primary" />
               </div>
@@ -93,7 +93,7 @@ const TechSkills = () => {
             dir="Ltr"
             className="right flex flex-col justify-center items-center space-y-5 md:space-y-14"
           >
-            <div className="flex justify-center items-center gap-x-3">
+            <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
                 <PencilRuler className="text-primary" />
               </div>
@@ -105,7 +105,7 @@ const TechSkills = () => {
               </div>
             </div>
 
-            <div className="flex justify-center items-center gap-x-3 ms-20">
+            <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
                 <FileCode2 className="text-primary" />
               </div>
@@ -119,7 +119,7 @@ const TechSkills = () => {
               </div>
             </div>
 
-            <div className="flex justify-center items-center gap-x-3">
+            <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
                 <ChevronsLeftRightEllipsis className="text-primary" />
               </div>

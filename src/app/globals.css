@@ -6,6 +6,10 @@ body {
   font-family: var(--FontCairo, sans-serif);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -80,7 +84,7 @@ body {
   }
 
   .section {
-    @apply py-28 border-b-4 border-primary rounded-br-[6rem] rounded-bl-[6rem] overflow-hidden;
+    @apply py-24 border-b-4 border-primary rounded-br-[3rem] md:rounded-br-[6rem] rounded-bl-[3rem] md:rounded-bl-[6rem] overflow-hidden;
   }
 
   .sectionTitle {
@@ -467,4 +471,8 @@ body {
   100% {
     background: hsl(var(--primary));
   }
+}
+
+.css-3hpdci-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+  color: hsl(var(--primary)) !important;
 }

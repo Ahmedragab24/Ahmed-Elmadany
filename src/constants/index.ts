@@ -1,4 +1,4 @@
-import { Step, Menu } from "@/interfaces";
+import { Menu, SoftSkills, Education } from "@/interfaces";
 
 export const MenuLink: Menu[] = [
   {
@@ -78,6 +78,7 @@ export const techSkills = [
   },
 ];
 
+
 export const ExperienceData = [
   {
     title: "My own projects",
@@ -120,7 +121,7 @@ export const ExperienceData = [
   },
 ];
 
-export const steps: Step[] = [
+export const EducationData: Education[] = [
   {
     title: "Bachelor of Social Work",
     history: "From 2020 to 2024",
@@ -144,5 +145,88 @@ export const steps: Step[] = [
       "درجة في علوم الكمبيوتر من جامعة هارفارد، منهج CS50 في علوم الكمبيوتر المتكاملة",
     icon: "CodeIcon",
     link: "/",
+  },
+];
+
+export const softSkillsData: SoftSkills[] = [
+  {
+    triggerTitle: "Effective Communication",
+    arTriggerTitle: "التواصل الفعال",
+    icon: "Handshake",
+    description:
+      "The ability to clearly articulate ideas and suggestions, whether in writing or orally. Ability to actively listen and understand customer and team members&apos; requirements.",
+    arDescription:
+      "القدرة على التعبير بوضوح عن الأفكار والاقتراحات، سواء كتابيًا أو شفويًا. القدرة على الاستماع بشكل نشط وفهم متطلبات العملاء وأعضاء الفريق.",
+    direction: "top",
+  },
+  {
+    triggerTitle: "Teamwork & collaboration",
+    arTriggerTitle: "العمل الجماعي والتعاون",
+    icon: "Users",
+    description:
+      "Ability to work effectively with other developers, designers, and project managers. Understand the importance of cooperation in achieving common goals.",
+    arDescription:
+      "القدرة على العمل بفعالية مع المطورين والمصممين ومديري المشاريع الآخرين. فهم أهمية التعاون في تحقيق الأهداف المشتركة.",
+    direction: "top",
+  },
+  {
+    triggerTitle: "Problem Solving",
+    arTriggerTitle: "حل المشاكل",
+    icon: "Bug",
+    description:
+      "Critical and analytical thinking to deal with programming challenges and unexpected problems. Ability to research and discover appropriate solutions when faced with technical obstacles.",
+    arDescription:
+      "التفكير النقدي والتحليلي للتعامل مع تحديات البرمجة والمشكلات غير المتوقعة. القدرة على البحث واكتشاف الحلول المناسبة عند مواجهة العقبات التقنية.",
+    direction: "left",
+  },
+  {
+    triggerTitle: "Time management",
+    arTriggerTitle: "إدارة الوقت",
+    icon: "AlarmClock",
+    description:
+      "Ability to effectively manage time to meet deadlines. Priority in distributing tasks and working on the most important tasks first.",
+    arDescription:
+      "القدرة على إدارة الوقت بشكل فعال لتلبية المواعيد النهائية. الأولوية في توزيع المهام والعمل على المهام الأكثر أهمية أولاً.",
+    direction: "left",
+  },
+  {
+    triggerTitle: "Continuous Learning",
+    arTriggerTitle: "التعلم المستمر",
+    icon: "Blocks",
+    description:
+      "Passion for learning new technologies and keeping abreast of continuous updates in the field of web development. Prepare to continuously develop your skills and follow the latest trends in front-end development.",
+    arDescription:
+      "الشغف بتعلم التقنيات الجديدة ومواكبة التحديثات المستمرة في مجال تطوير الويب. الاستعداد لتطوير مهاراتك باستمرار ومتابعة أحدث الاتجاهات في تطوير الواجهة الأمامية.",
+    direction: "right",
+  },
+  {
+    triggerTitle: "Attention To Detail",
+    arTriggerTitle: "الاهتمام بالتفاصيل",
+    icon: "Bolt",
+    description:
+      "Ability to detect small errors that may affect the user experience. Ensure that high quality and flawless work is provided.",
+    arDescription:
+      "القدرة على اكتشاف الأخطاء الصغيرة التي قد تؤثر على تجربة المستخدم. تأكد من تقديم عمل عالي الجودة وخالٍ من العيوب.",
+    direction: "right",
+  },
+  {
+    triggerTitle: "Resilience & Adaptation",
+    arTriggerTitle: "المرونة والتكيف",
+    icon: "Container",
+    description:
+      "Ability to adapt to changes in projects or tools used. Willingness to work in changing environments and handle diverse tasks.",
+    arDescription:
+      "القدرة على التكيف مع التغيرات في المشاريع أو الأدوات المستخدمة. الاستعداد للعمل في بيئات متغيرة والتعامل مع مهام متنوعة.",
+    direction: "bottom",
+  },
+  {
+    triggerTitle: "Creativity and Excellence",
+    arTriggerTitle: "الإبداع والتميز",
+    icon: "Webhook",
+    description:
+      "Ability to think outside the box and provide innovative solutions. Develop attractive user interfaces that are simple to use.",
+    arDescription:
+      "القدرة على التفكير خارج الصندوق وتقديم حلول مبتكرة. تطوير واجهات مستخدم جذابة وسهلة الاستخدام.",
+    direction: "bottom",
   },
 ];

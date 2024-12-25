@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+import * as LucideIcons from "lucide-react";
 
+type IconType = keyof typeof LucideIcons;
 
 export interface Menu {
   Title: string;
@@ -25,7 +27,7 @@ export interface ICategories {
   name: string;
 }
 
-export interface Step {
+export interface Education {
   title: string;
   history: string;
   description: string;
@@ -34,4 +36,13 @@ export interface Step {
   arabicDescription: string;
   icon: ReactNode;
   link: string;
+}
+
+export interface SoftSkills {
+  triggerTitle: string;
+  arTriggerTitle: string;
+  description: string;
+  arDescription: string;
+  icon: IconType;
+  direction: "top" | "left" | "right" | "bottom";
 }
