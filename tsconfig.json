@@ -22,8 +22,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["src/components/*"],
-      "@/schemas": ["src/schemas/index"],
       "@/hooks/*": ["src/hooks/*"],
+      "@/schemas": ["src/schemas"],
+      "@/utils/*": ["src/utils/*"],
       "@/app/*": ["src/app/*"],
       "@/constants": ["src/constants"]
     },
