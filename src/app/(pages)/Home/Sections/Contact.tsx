@@ -63,10 +63,11 @@ const Contact = () => {
       }
     } catch (err: unknown) {
       const errorMessage =
-        err instanceof Error ? err.message :
-        (lang === "English"
+        err instanceof Error
+          ? err.message
+          : lang === "English"
           ? "An unexpected error occurred."
-          : "حدث خطأ غير متوقع.");
+          : "حدث خطأ غير متوقع.";
       setError(errorMessage);
       toast({
         title: lang === "English" ? "Error!" : "خطأ!",
@@ -92,7 +93,12 @@ const Contact = () => {
         </motion.div>
 
         {/* Form */}
-        <div className="container mx-auto px-5">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="container mx-auto px-5"
+        >
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -190,7 +196,7 @@ const Contact = () => {
               </Button>
             </form>
           </Form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

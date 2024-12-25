@@ -8,6 +8,7 @@ import ProjectData from "../Components/ProjectData";
 import { getCategories, getData } from "@/utils/Appwrite";
 import { ICategories, Iproject } from "@/interfaces";
 
+
 const Projects = () => {
   const { lang } = useLanguage();
   const [data, setData] = useState<Iproject[]>([]);

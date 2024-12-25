@@ -50,5 +50,26 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "description": "Ahmed Ekmadany Wepsite (Front-end developer)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmedragab24/Ahmed-Elmadany.git"
+  },
+  "keywords": [
+    "front-end",
+    "website",
+    "uiux",
+    "web",
+    "build_website",
+    "create_website",
+    "ai"
+  ],
+  "author": "Ahmed Elmadany",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmedragab24/Ahmed-Elmadany/issues"
+  },
+  "homepage": "https://github.com/Ahmedragab24/Ahmed-Elmadany#readme"
 }
