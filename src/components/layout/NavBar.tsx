@@ -22,7 +22,7 @@ import {
 import { ModeToggle } from "../ui/modeToggle";
 import SelectLang from "../ui/selectLang";
 import { MenuLink, NavLink } from "@/constants";
-import Logo from "../../../public/Logo.png";
+import Logo from "public/Logo.png";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 
 export default function Navbar() {
