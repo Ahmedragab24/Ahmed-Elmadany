@@ -96,7 +96,7 @@ html {
   }
 
   .circle {
-    @apply flex flex-col gap-y-3 w-56 bg-secondary p-8 md:p-4 xl:p-14 rounded-[5rem] text-center relative z-10 shadow-lg;
+    @apply flex flex-col w-52 md:w-56 bg-secondary py-6 px-14 xl:p-14 rounded-[5rem] text-center relative z-10 shadow-lg;
   }
 
   .circle h3 {
@@ -471,8 +471,4 @@ html {
   100% {
     background: hsl(var(--primary));
   }
-}
-
-.css-3hpdci-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
-  color: hsl(var(--primary)) !important;
 }

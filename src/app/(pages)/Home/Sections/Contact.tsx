@@ -12,8 +12,8 @@ import { useLanguage } from "@/providers/LanguageContextProvider";
 import { contactSchema } from "@/schemas";
 import { sendMessage } from "@/utils/Appwrite";
 import { Loader } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { toast } from "@/hooks/use-toast";
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 

@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
-import { Menu } from "lucide-react";
-import Image from "next/image";
+import { ModeToggle } from "../ui/modeToggle";
+import SelectLang from "../ui/selectLang";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,16 +23,19 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "../ui/modeToggle";
-import SelectLang from "../ui/selectLang";
 import { MenuLink, NavLink } from "@/constants";
-import Logo from "public/Logo.png";
 import { useLanguage } from "@/providers/LanguageContextProvider";
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "public/Logo.png";
+import { useEffect, useState, useCallback } from "react";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { lang } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handle scroll visibility
   const handleScroll = useCallback(() => {
@@ -40,10 +47,11 @@ export default function Navbar() {
   // Attach scroll listener
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, [handleScroll, isMenuOpen]);
 
   return (
     <nav
@@ -57,9 +65,15 @@ export default function Navbar() {
           <div className="flex gap-x-6">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex gap-2">
-                <Image src={Logo} alt="Logo" width={48} height={32} />
-                <span className="text-2xl font-bold text-primary">
+              <Link href="/" className="flex gap-2 justify-center items-center">
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  width={48}
+                  height={32}
+                  className="w-[40px] h-[24px] md:w-[48px] md:h-[32px]"
+                />
+                <span className="text-lg md:text-2xl font-bold text-primary">
                   {lang == "English" ? "Elmadany" : "المدني"}
                 </span>
               </Link>
@@ -67,13 +81,13 @@ export default function Navbar() {
 
             {/* Navigation Links */}
             <div className="hidden sm:flex sm:gap-x-6">
-              {MenuLink.map(({ Title, Url }) => (
+              {MenuLink.map(({ Title, ArTitle, Url }) => (
                 <Link
                   key={Title}
                   href={Url}
                   className="inline-flex items-center px-2 text-md font-medium text-gray-500 duration-300 hover:text-primary"
                 >
-                  {Title}
+                  {lang == "English" ? Title : ArTitle}
                 </Link>
               ))}
               {/* Dropdown Menu */}
@@ -81,16 +95,16 @@ export default function Navbar() {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-gray-500 text-md">
-                      About me
+                      {lang == "English" ? "About me" : "عني"}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="flex flex-col gap-2">
-                      {NavLink.map(({ Title, Url }) => (
+                      {NavLink.map(({ Title, ArTitle, Url }) => (
                         <NavigationMenuLink
                           key={Title}
                           href={Url}
                           className="w-[9.55rem] text-gray-500 px-5 py-2 rounded-sm duration-300 hover:bg-primary hover:text-foreground"
                         >
-                          {Title}
+                          {lang == "English" ? Title : ArTitle}
                         </NavigationMenuLink>
                       ))}
                     </NavigationMenuContent>
@@ -108,45 +122,50 @@ export default function Navbar() {
 
           {/* Mobile Navigation */}
           <div className="-mr-2 flex items-center sm:hidden">
-            <DropdownMenu>
+            <DropdownMenu open={isMenuOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6 text-primary" aria-hidden="true" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMenuOpen((prev) => !prev)}
+                >
+                  <Menu className="!w-7 !h-7 text-primary" aria-hidden="true" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-fit">
                 {MenuLink.map(({ Title, Url }) => (
-                  <DropdownMenuItem key={Title} asChild>
+                  <DropdownMenuItem
+                    key={Title}
+                    asChild
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Link href={Url}>{Title}</Link>
                   </DropdownMenuItem>
                 ))}
                 {/* Dropdown Submenu */}
-                <DropdownMenuItem>
-                  <NavigationMenu>
-                    <NavigationMenuList>
-                      <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-gray-500">
-                          About me
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent className="flex flex-col gap-2">
-                          {NavLink.map(({ Title, Url }) => (
-                            <NavigationMenuLink
-                              key={Title}
-                              href={Url}
-                              className="w-32 px-5 py-2 duration-300 hover:bg-primary"
-                            >
-                              {Title}
-                            </NavigationMenuLink>
-                          ))}
-                        </NavigationMenuContent>
-                      </NavigationMenuItem>
-                    </NavigationMenuList>
-                  </NavigationMenu>
-                </DropdownMenuItem>
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="text-foreground flex justify-center items-center">
+                      About me
+                    </AccordionTrigger>
+                    <AccordionContent className="flex flex-col text-center gap-2 bg-secondary rounded-md">
+                      {NavLink.map(({ Title, Url }) => (
+                        <Link
+                          key={Title}
+                          href={Url}
+                          className="w-32 px-5 py-2 duration-300 hover:bg-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {Title}
+                        </Link>
+                      ))}
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
                 {/* Language and Theme Toggle */}
                 <DropdownMenuItem>
-                  <SelectLang />
-                  <ModeToggle />
+                  <SelectLang onClick={() => setIsMenuOpen(false)}/>
+                  <ModeToggle onClick={() => setIsMenuOpen(false)}/>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

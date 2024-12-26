@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { aboutMe } from "@/constants";
+import CustomTypewriter from "@/hooks/CustomTypewriter";
+import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
 import {
   Facebook,
@@ -12,9 +14,7 @@ import {
   Minus,
   NotepadText,
 } from "lucide-react";
-import { aboutMe } from "@/constants";
-import { useLanguage } from "@/providers/LanguageContextProvider";
-import CustomTypewriter from "@/hooks/CustomTypewriter";
+import Link from "next/link";
 
 const Hero = () => {
   const {
@@ -45,12 +45,12 @@ const Hero = () => {
           }`}
           data-aos="fade-up"
         >
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1 md:gap-2">
             <h3 className="text-xl lg:text-2xl">
               {lang == "English" ? title : arabicTitle}
             </h3>
 
-            <div className="flex gap-3 py-2 title font-bold justify-center md:justify-start items-center">
+            <div className="flex gap-1 md:gap-3 py-2 title font-bold justify-center md:justify-start items-center">
               <h1>{lang == "English" ? "I'm" : "أنا"}</h1>
               <div className="text-primary">
                 <CustomTypewriter
@@ -64,19 +64,19 @@ const Hero = () => {
               </div>
             </div>
 
-            <p className="text-muted-foreground text-sm font-light lg:text-lg lg:w-[80%]">
+            <p className="text-muted-foreground text-sm font-light lg:text-lg lg:w-[80%] line-clamp-4 md:line-clamp-none">
               {lang == "English" ? description : arabicDescription}
             </p>
 
-            <div className="flex gap-2 justify-center items-center md:justify-start my-4">
+            <div className="flex gap-1 md:gap-2 justify-center items-center md:justify-start my-4">
               <Button
-                size={"lg"}
+                className="px-3 py-2 md:px-10 md:py-6 text-sm md:text-lg"
                 onClick={() => window.open("/CV/Ahmed Ragab.pdf", "_blank")}
               >
                 {lang == "English" ? "View CV" : "عرض السيرة الذاتية"}{" "}
-                <NotepadText size={15} className="ms-2" />
+                <NotepadText size={15} className="mx-1" />
               </Button>
-              <Button variant={"ghost"} className="flex items-center gap-2">
+              <Button variant={"ghost"} className="flex items-center gap-1 md:gap-2 text-sm px-2 py-2 md:px-6 md:py-4">
                 <Link href={"/#About"}>
                   {lang == "English" ? "More Info" : "المزيد من المعلومات"}
                 </Link>

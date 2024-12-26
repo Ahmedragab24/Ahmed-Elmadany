@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 const Footer = () => {
   return (
     <footer
-      className="relative z-10 bg-primary text-white  py-3 border-t-1 border-primary rounded-tr-[3rem] rounded-tl-[3rem] md:rounded-tr-[6rem] md:rounded-tl-[6rem] shadow-sm shadow-gray-700 "
+      className="relative z-10 bg-background text-primary  py-3 border-t-4 border-primary rounded-tr-[3rem] rounded-tl-[3rem] md:rounded-tr-[6rem] md:rounded-tl-[6rem] shadow-sm shadow-gray-700 "
       id="Footer"
     >
       <aside className="container  flex-col flex md:flex-row justify-between items-center text-center gap-y-3">

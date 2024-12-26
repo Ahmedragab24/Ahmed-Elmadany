@@ -1,7 +1,6 @@
 // SelectLang.tsx
 "use client";
 
-import * as React from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,11 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
 import { useLanguage } from "@/providers/LanguageContextProvider";
+import Image from "next/image";
+import * as React from "react";
 
-
-const SelectLang = () => {
+const SelectLang = ({ onClick }: { onClick?: () => void }) => {
   const { lang, setLanguage } = useLanguage();
 
   return (
@@ -41,7 +40,10 @@ const SelectLang = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
-          onClick={() => setLanguage("Arabic")}
+          onClick={() => {
+            setLanguage("Arabic");
+            if (onClick) onClick()
+          }}
           className="flex justify-center items-center gap-x-4 cursor-pointer"
         >
           Arabic
@@ -54,7 +56,10 @@ const SelectLang = () => {
           />
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setLanguage("English")}
+          onClick={() => {
+            setLanguage("English");
+            if (onClick) onClick()
+          }}
           className="flex justify-center items-center gap-x-4 cursor-pointer"
         >
           English

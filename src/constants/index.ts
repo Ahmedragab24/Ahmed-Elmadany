@@ -3,10 +3,12 @@ import { Menu, SoftSkills, Education, CustomerReviewProps } from "@/interfaces";
 export const MenuLink: Menu[] = [
   {
     Title: "Home",
+    ArTitle: "الرئيسية",
     Url: "./",
   },
   {
     Title: "Contact Me",
+    ArTitle: "تواصل معي",
     Url: "./#Contact",
   },
 ];
@@ -14,26 +16,32 @@ export const MenuLink: Menu[] = [
 export const NavLink: Menu[] = [
   {
     Title: "Technical Skills",
+    ArTitle: "المهارات الفنية",
     Url: "./#TechSkills",
   },
   {
     Title: "Soft Skills",
+    ArTitle: "المهارات الشخصية",
     Url: "./#SoftSkills",
   },
   {
     Title: "Projects",
+    ArTitle: "المشاريع",
     Url: "./#Projects",
   },
   {
     Title: "Educations",
+    ArTitle: "التعليم",
     Url: "./#Education",
   },
   {
     Title: "Experience",
+    ArTitle: "الخبرات",
     Url: "./#Experience",
   },
   {
     Title: "Reviews",
+    ArTitle: "التقييمات",
     Url: "./#CustomerReviews",
   },
 ];

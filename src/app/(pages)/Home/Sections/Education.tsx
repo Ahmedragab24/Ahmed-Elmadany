@@ -1,20 +1,22 @@
 "use client";
 
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { EducationData } from "@/constants";
+import { useLanguage } from "@/providers/LanguageContextProvider";
+import CodeIcon from "@mui/icons-material/Code";
+import SchoolIcon from "@mui/icons-material/School";
+import { StepConnector, Typography, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import SchoolIcon from "@mui/icons-material/School";
-import CodeIcon from "@mui/icons-material/Code";
-import { StepConnector, Typography } from "@mui/material";
+import Stepper from "@mui/material/Stepper";
 import { motion } from "framer-motion";
-import { EducationData } from "@/constants";
-import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/providers/LanguageContextProvider";
+import { CircleCheckBig } from "lucide-react";
+import React from "react";
 
 const Education = () => {
   const { lang } = useLanguage();
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const iconMap = {
     SchoolIcon,
@@ -40,11 +42,10 @@ const Education = () => {
         >
           <Box sx={{ width: "100%" }}>
             <Stepper
-              activeStep={3}
-              alternativeLabel
-              connector={<StepConnector />}
-              orientation={"horizontal"}
-              className="!flex !md:flex-col"
+              activeStep={2}
+              alternativeLabel={!isSmallScreen}
+              connector={<StepConnector className="hidden md:block"/>}
+              orientation={isSmallScreen ? "vertical" : "horizontal"}
             >
               {EducationData.map(
                 ({
@@ -57,7 +58,7 @@ const Education = () => {
                   arabicHistory,
                 }) => (
                   <Step key={title} className="flex flex-col items-center">
-                    <StepLabel className="mb-2">
+                    <StepLabel icon={<CircleCheckBig className="text-primary"/>} className="mb-2">
                       <div className="flex justify-center items-center">
                         <span>
                           {React.createElement(

@@ -5,6 +5,7 @@ type IconType = keyof typeof LucideIcons;
 
 export interface Menu {
   Title: string;
+  ArTitle: string;
   Url: string;
 }
 

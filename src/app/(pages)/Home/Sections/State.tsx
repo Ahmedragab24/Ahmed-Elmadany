@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
 import { ChevronsRight, Github } from "lucide-react";
 import Link from "next/link";
-import { useLanguage } from "@/providers/LanguageContextProvider";
-import { Button } from "@/components/ui/button";
-
+import React, { useEffect, useState } from "react";
 
 const State = () => {
   const [count1, setCount1] = useState(0);
@@ -75,10 +74,7 @@ const State = () => {
   }, [started, count4]);
 
   return (
-    <section
-      className="section"
-      id="About"
-    >
+    <section className="section" id="About">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -89,19 +85,15 @@ const State = () => {
           {lang == "English" ? "About Me" : "ْعَنِّي"}
         </motion.div>
 
-        <div className=" flex flex-col justify-center items-center gap-5 md:flex-row mb-20">
+        <div className=" flex flex-col justify-center items-center gap-5 md:flex-row mb-10 md:mb-20 ">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="circle"
           >
-            <h3 >
-              {count1}
-            </h3>
-            <p >
-              {lang == "English" ? "my Age " : "العمر"}
-            </p>
+            <h3>{count1}</h3>
+            <p>{lang == "English" ? "my Age " : "العمر"}</p>
           </motion.div>
 
           <motion.div
@@ -120,9 +112,7 @@ const State = () => {
             data-aos="fade-up"
           >
             <h3>{count2}+</h3>
-            <p>
-              {lang == "English" ? "Experience" : "الخبرة"}
-            </p>
+            <p>{lang == "English" ? "Experience" : "الخبرة"}</p>
           </motion.div>
 
           <motion.div
@@ -140,10 +130,8 @@ const State = () => {
             className="circle"
             data-aos="fade-up"
           >
-            <h3 >{count3}+</h3>
-            <p>
-              {lang == "English" ? "Total Projects" : "مجموع المشاريع"}
-            </p>
+            <h3>{count3}+</h3>
+            <p>{lang == "English" ? "Total Projects" : "مجموع المشاريع"}</p>
           </motion.div>
 
           <motion.div
@@ -162,9 +150,7 @@ const State = () => {
             data-aos="fade-up"
           >
             <h3>{count4}+</h3>
-            <p>
-              {lang == "English" ? "Clients" : "العملاء"}
-            </p>
+            <p>{lang == "English" ? "Clients" : "العملاء"}</p>
           </motion.div>
         </div>
 
@@ -172,7 +158,7 @@ const State = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center text-sm md:text-lg m-auto text-muted-foreground md:w-[70%]"
+          className="text-center text-sm md:text-lg m-auto text-muted-foreground w-[90%] md:w-[70%]"
         >
           {lang == "English"
             ? "I am a strong communicator and a collaborative team player and enjoy working in a fast-paced environment. I am also comfortable working independently and taking ownership of projects. I am constantly seeking new challenges and opportunities to learn and grow as a software engineer."

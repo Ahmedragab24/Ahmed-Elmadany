@@ -27,7 +27,7 @@ const Categories = ({
     setActive(category);
 
     if (category === "All") {
-      onFilter(data); // إعادة جميع البيانات
+      onFilter(data);
     } else {
       const filteredData = data.filter((project) =>
         project.categories?.some((cat) => cat.name === category)
