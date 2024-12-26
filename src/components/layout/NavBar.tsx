@@ -2,12 +2,6 @@
 
 import { ModeToggle } from "../ui/modeToggle";
 import SelectLang from "../ui/selectLang";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -30,6 +24,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "public/Logo.png";
 import { useEffect, useState, useCallback } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
