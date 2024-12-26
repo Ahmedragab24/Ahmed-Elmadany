@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Cairo_Play, Cairo } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/NavBar";
 import ParticlesComponent from "@/components/ui/Particles";
-import { ThemeProvider } from "@/providers/theme-provider";
-import { LanguageProvider } from "@/providers/LanguageContextProvider";
+import ScrollUp from "@/components/ui/scrollUp";
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from "@/providers/LanguageContextProvider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const FontCairoPlay = Cairo_Play({
   variable: "--FontCairoPlay",
@@ -41,7 +44,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
+            <Navbar />
             {children}
+            <ScrollUp />
+            <Footer />
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>
