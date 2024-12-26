@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import AnimationTech from "../Components/AnimationTech";
+import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
 import {
   ChevronsLeftRightEllipsis,
@@ -10,17 +11,13 @@ import {
   PencilRuler,
   SquareTerminal,
 } from "lucide-react";
-import { useLanguage } from "@/providers/LanguageContextProvider";
-import AnimationTech from "../Components/AnimationTech";
+import React from "react";
 
 const TechSkills = () => {
   const { lang } = useLanguage();
 
   return (
-    <section
-      className="section"
-      id="TechSkills"
-    >
+    <section className="section" id="TechSkills">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -41,7 +38,7 @@ const TechSkills = () => {
           >
             <div className="flex justify-center items-center gap-x-3">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <Code className="text-primary" />
+                <Code className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Programming languages</h2>
@@ -53,7 +50,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <SquareTerminal className="text-primary" />
+                <SquareTerminal className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Computer Science</h2>
@@ -66,7 +63,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <Eclipse className="text-primary" />
+                <Eclipse className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Project control skills</h2>
@@ -83,7 +80,7 @@ const TechSkills = () => {
             transition={{ duration: 0.9 }}
             className="relative"
           >
-            <AnimationTech/>
+            <AnimationTech />
           </motion.div>
 
           <motion.div
@@ -95,7 +92,7 @@ const TechSkills = () => {
           >
             <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <PencilRuler className="text-primary" />
+                <PencilRuler className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Ui Designer</h2>
@@ -107,7 +104,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <FileCode2 className="text-primary" />
+                <FileCode2 className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Front-end</h2>
@@ -121,7 +118,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <ChevronsLeftRightEllipsis className="text-primary" />
+                <ChevronsLeftRightEllipsis className="text-primary w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Frameworks & Libraries</h2>
