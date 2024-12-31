@@ -46,6 +46,7 @@ const Education = () => {
               alternativeLabel={!isSmallScreen}
               connector={<StepConnector className="hidden md:block"/>}
               orientation={isSmallScreen ? "vertical" : "horizontal"}
+              className="flex flex-col md:flex-row gap-6 md:gap-0"
             >
               {EducationData.map(
                 ({

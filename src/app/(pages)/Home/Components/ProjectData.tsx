@@ -31,8 +31,8 @@ const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
       {isLoading && (
         <div className="flex flex-col lg:flex-row justify-center items-center gap-4">
           <Skeleton className="w-[300px] md:w-[420px] h-[250px] mx-auto rounded-2xl" />
-          <Skeleton className="w-[300px] md:w-[420px] h-[250px] mx-auto rounded-2xl" />
-          <Skeleton className="w-[300px] md:w-[420px] h-[250px] mx-auto rounded-2xl" />
+          <Skeleton className="hidden lg:block w-[300px] md:w-[420px] h-[250px] mx-auto rounded-2xl" />
+          <Skeleton className="hidden lg:block w-[300px] md:w-[420px] h-[250px] mx-auto rounded-2xl" />
         </div>
       )}
 
@@ -47,10 +47,12 @@ const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
                   <ProjectCard
                     $id={project.$id}
                     title={project.title}
-                    imageUrl={project.image}
-                    demoLink={project.DemoLink}
+                    image={project.image}
+                    description={project.description}
+                    DemoLink={project.DemoLink}
                     githubLink={project.githubLink}
                     categories={project.categories}
+                    Technologies={project.Technologies}
                   />
                 </CarouselItem>
               ))}

@@ -1,13 +1,12 @@
 "use client";
 
-import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import * as React from "react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -162,7 +161,7 @@ const CarouselContent = React.forwardRef<
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "-ml-4" : "-mt-4",
           className
         )}
         {...props}
@@ -184,11 +183,11 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0",
+        "min-w-0 shrink-0 grow-0", 
         "basis-full", 
-        "sm:basis-1/2", 
-        "lg:basis-1/3",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        "sm:basis-1/2", // عرض نصف للشاشات الكبيرة
+        "px-2", // إضافة تباعد بين العناصر
+        orientation === "horizontal" ? "pl-4" : "pt-4", // ضبط الحشوة بناءً على التوجيه
         className
       )}
       {...props}

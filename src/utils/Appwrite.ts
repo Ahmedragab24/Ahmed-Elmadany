@@ -30,7 +30,7 @@ export const getData = async () => {
       `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`,
       `${process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_PROJECTS}`
     );
-    return response.documents;
+    return response.documents.reverse();
   } catch (error) {
     console.error("Error fetching data:", error);
   }

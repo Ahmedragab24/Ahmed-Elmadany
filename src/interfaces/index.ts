@@ -16,6 +16,7 @@ export interface Iproject {
   image: string;
   DemoLink: string;
   githubLink: string;
+  Technologies: string[];
   categories?: [
     {
       name: string;

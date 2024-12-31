@@ -1,4 +1,9 @@
-import { Menu, SoftSkills, Education, CustomerReviewProps } from "@/interfaces";
+import {
+  Menu,
+  SoftSkills,
+  Education,
+  CustomerReviewProps,
+} from "@/interfaces";
 
 export const MenuLink: Menu[] = [
   {
@@ -89,7 +94,6 @@ export const techSkills = [
     ],
   },
 ];
-
 
 export const ExperienceData = [
   {
@@ -248,21 +252,24 @@ export const reviews: CustomerReviewProps[] = [
     id: 1,
     name: "Moamen",
     avatar: "/user1.png",
-    review: "Engineer Ahmed, apart from his professionalism and excellent and perfect work, is a very well-mannered person. This is the first time I have dealt with him, but I will continue to deal with him in future projects because he is an artist in his work. He worked with me on the front end of one of the pages of my website and was creative on the page, and the final product was very excellent.",
+    review:
+      "Engineer Ahmed, apart from his professionalism and excellent and perfect work, is a very well-mannered person. This is the first time I have dealt with him, but I will continue to deal with him in future projects because he is an artist in his work. He worked with me on the front end of one of the pages of my website and was creative on the page, and the final product was very excellent.",
     rating: 5,
   },
   {
     id: 2,
     name: "Tahani",
     avatar: "/user4.webp",
-    review: "More than wonderful service. Engineer Ahmed is excellent in his work. I will return to work with him again, God willing.",
+    review:
+      "More than wonderful service. Engineer Ahmed is excellent in his work. I will return to work with him again, God willing.",
     rating: 5,
   },
   {
     id: 3,
     name: "Omar Faiz",
     avatar: "/user2.png",
-    review: "Experienced in work, very fast in completion, and very well-mannered. I always recommend working with him.",
+    review:
+      "Experienced in work, very fast in completion, and very well-mannered. I always recommend working with him.",
     rating: 5,
   },
   {
@@ -285,5 +292,5 @@ export const reviews: CustomerReviewProps[] = [
     avatar: "/user6.webp",
     review: "The service was excellent. it was website is very perfect.",
     rating: 4,
-  }
-]
+  },
+];
