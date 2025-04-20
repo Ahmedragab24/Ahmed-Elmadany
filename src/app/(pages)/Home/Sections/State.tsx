@@ -66,7 +66,7 @@ const State = () => {
           {lang === "English" ? "About Me" : "ْعَنِّي"}
         </motion.div>
 
-        <div className="flex flex-col justify-center items-center gap-5 md:flex-row mb-10 md:mb-20 flex-wrap">
+        <motion.div className="flex flex-col justify-center items-center gap-5 md:flex-row mb-10 md:mb-20 flex-wrap">
           {stateData.map((item, index) => (
             <React.Fragment key={item.$id}>
               <motion.div
@@ -89,7 +89,7 @@ const State = () => {
               )}
             </React.Fragment>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 100 }}
@@ -97,7 +97,7 @@ const State = () => {
           transition={{ duration: 0.5 }}
           className="text-center text-sm md:text-lg m-auto text-muted-foreground w-[90%] md:w-[70%]"
         >
-          {lang === "English"
+          {lang == "English"
             ? "I am a strong communicator and a collaborative team player and enjoy working in a fast-paced environment. I am also comfortable working independently and taking ownership of projects. I am constantly seeking new challenges and opportunities to learn and grow as a software engineer."
             : "أنا شخص متمكن من التواصل وأعمل ضمن فريق وأستمتع بالعمل في بيئة سريعة الخطى. كما أنني أشعر بالراحة في العمل بشكل مستقل وتولي مسؤولية المشاريع. وأبحث باستمرار عن تحديات وفرص جديدة للتعلم والنمو كمهندس برمجيات."}
         </motion.div>

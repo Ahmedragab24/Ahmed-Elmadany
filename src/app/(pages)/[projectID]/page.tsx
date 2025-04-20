@@ -3,8 +3,8 @@
 import ProjectData from "../Home/Components/ProjectData";
 import { Button } from "@/components/ui/button";
 import { Iproject } from "@/interfaces";
-import { getData, getProjectById } from "@/lib/appwrite/api";
 import { useLanguage } from "@/providers/LanguageContextProvider";
+import { getData, getProjectById } from "@/utils/Appwrite";
 import { Code, Eye, Loader, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

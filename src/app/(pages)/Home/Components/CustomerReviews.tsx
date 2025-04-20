@@ -1,3 +1,4 @@
+
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Review } from "@/interfaces";
@@ -38,6 +39,7 @@ export const CustomerReview = memo(function CustomerReview({
                       : "text-gray-300"
                   }`}
                   aria-hidden="true"
+
                 />
               ))}
             </div>
@@ -48,3 +50,4 @@ export const CustomerReview = memo(function CustomerReview({
     </Card>
   );
 });
+

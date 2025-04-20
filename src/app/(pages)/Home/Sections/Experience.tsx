@@ -1,7 +1,7 @@
 "use client";
 
-import { Experience as ExperienceType } from "@/interfaces";
-import { getExperiences } from "@/lib/appwrite/api";
+
+import { ExperienceData } from "@/constants";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import Timeline from "@mui/lab/Timeline";
 import TimelineConnector from "@mui/lab/TimelineConnector";
@@ -15,24 +15,7 @@ import * as React from "react";
 
 const Experience = () => {
   const { lang } = useLanguage();
-  const [ExperienceData, setExperienceData] = React.useState<ExperienceType[]>(
-    []
-  );
 
-  React.useEffect(() => {
-    const fetchExperienceData = async () => {
-      try {
-        const response = await getExperiences();
-        setExperienceData(response);
-      } catch (error) {
-        console.error("Error fetching experience data:", error);
-      }
-    };
-
-    fetchExperienceData();
-  }, []);
-
-  if (!ExperienceData || ExperienceData.length === 0) return null;
 
   return (
     <section className="section" id="Experience">
@@ -66,17 +49,14 @@ const Experience = () => {
                       ? item.description
                       : item.arabicDescription}
                   </p>
-                  {item.link && (
-                    <Link
-                      href={item.link}
-                      target="_blank"
-                      className="underline decoration-primary text-sm md:text-md"
-                    >
-                      {lang == "English"
-                        ? item.titleLink
-                        : item.arabicTitleLink}
-                    </Link>
-                  )}
+
+                  <Link
+                    href={item.link}
+                    target="_blank"
+                    className="underline decoration-primary text-sm md:text-md"
+                  >
+                    {lang == "English" ? item.titleLink : item.arabicTitleLink}
+                  </Link>
                 </m.div>
               </TimelineContent>
             </TimelineItem>

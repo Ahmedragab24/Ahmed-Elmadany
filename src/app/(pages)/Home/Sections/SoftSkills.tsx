@@ -1,11 +1,12 @@
 "use client";
 
-import AlertDialogSoftSkills from "../Components/AlertDialogSoftSkills";
-import AnimatedAvatar from "../Components/Avatar";
-import { softSkillsData } from "@/constants";
-import { useLanguage } from "@/providers/LanguageContextProvider";
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageContextProvider";
+import AlertDialogSoftSkills from "../Components/AlertDialogSoftSkills";
+import { softSkillsData } from "@/constants";
+import AnimatedAvatar from "../Components/Avatar";
+
 
 const SoftSkills = () => {
   const { lang } = useLanguage();

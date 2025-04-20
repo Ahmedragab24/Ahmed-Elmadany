@@ -185,9 +185,9 @@ const CarouselItem = React.forwardRef<
       className={cn(
         "min-w-0 shrink-0 grow-0",
         "basis-full",
-        "sm:basis-1/2", // عرض نصف للشاشات الكبيرة
-        "px-2", // إضافة تباعد بين العناصر
-        orientation === "horizontal" ? "pl-4" : "pt-4", // ضبط الحشوة بناءً على التوجيه
+        "sm:basis-1/2",
+        "px-2",
+        orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
       {...props}

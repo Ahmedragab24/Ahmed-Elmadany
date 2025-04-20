@@ -28,14 +28,16 @@ import { useLanguage } from "@/providers/LanguageContextProvider";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "public/images/Logo.png";
+import Logo from "public/Logo.png";
 import { useEffect, useState, useCallback } from "react";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const { lang } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   // Handle scroll visibility
   const handleScroll = useCallback(() => {
@@ -74,7 +76,8 @@ export default function Navbar() {
                   className="w-[40px] h-[24px] md:w-[48px] md:h-[32px]"
                 />
                 <span className="text-lg md:text-2xl font-bold text-primary">
-                  {lang === "English" ? "Elmadany" : "المدني"}
+
+                  {lang == "English" ? "Elmadany" : "المدني"}
                 </span>
               </Link>
             </div>
@@ -95,7 +98,8 @@ export default function Navbar() {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-gray-500 text-md">
-                      {lang == "English" ? "About me" : "من أنا"}
+
+                      {lang == "English" ? "About me" : "عني"}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="flex flex-col gap-2">
                       {NavLink.map(({ Title, ArTitle, Url }) => (

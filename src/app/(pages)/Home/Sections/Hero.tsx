@@ -1,3 +1,4 @@
+
 import ClientHero from "../Components/client-hero";
 import { getAbout } from "@/lib/appwrite/api";
 import { Suspense } from "react";

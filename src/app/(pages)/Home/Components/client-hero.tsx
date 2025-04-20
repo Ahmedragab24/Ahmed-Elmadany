@@ -159,7 +159,7 @@ function ClientHero({ aboutData }: { aboutData: About }) {
           <p className="text-muted-foreground text-sm font-medium lg:text-lg lg:w-[80%]">
             {content.description}
           </p>
-          <div className="flex gap-1 md:gap-2 justify-center md:justify-start my-4">
+          <div className="flex gap-1 md:gap-2 items-center justify-center md:justify-start my-4">
             <Button
               className="px-3 py-2 md:px-10 md:py-6 text-sm md:text-lg"
               onClick={() => window.open(aboutData.CV, "_blank")}

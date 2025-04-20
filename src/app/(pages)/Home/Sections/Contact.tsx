@@ -105,9 +105,9 @@ const Contact = () => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8 mx-auto md:w-2/3 lg:w-1/2"
+              className="space-y-6 mx-auto md:max-w-2xl lg:max-w-3xl"
             >
-              <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
+              <div className="flex gap-6 justify-space-between items-center">
                 {/* Name Field */}
                 <FormField
                   control={form.control}
@@ -153,73 +153,73 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-              </div>
 
-              {/* Phone Number Field */}
-              <FormField
-                control={form.control}
-                name="PhoneNumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="flex items-center gap-2">
-                      {lang === "English" ? "Phone Number" : "رقم الهاتف"}
-                    </FormLabel>
-                    <FormControl>
-                      <div className="phone-input-container">
-                        <PhoneInput
-                          country={"eg"}
-                          value={field.value}
-                          onChange={field.onChange}
-                          inputProps={{
-                            name: field.name,
-                            required: true,
-                            autoFocus: false,
-                          }}
-                          containerClass="phone-input-container"
-                          inputClass="phone-input"
-                          buttonClass="country-dropdown"
-                          dropdownClass="country-dropdown-list"
-                          placeholder={
-                            lang === "English"
-                              ? "Your phone number"
-                              : "رقم هاتفك"
-                          }
-                          enableSearch={true}
-                          searchPlaceholder={
-                            lang === "English"
-                              ? "Search countries"
-                              : "البحث عن الدول"
-                          }
-                          searchNotFound={
-                            lang === "English"
-                              ? "No countries found"
-                              : "لم يتم العثور على دول"
-                          }
-                          preferredCountries={[
-                            "us",
-                            "gb",
-                            "ca",
-                            "sa",
-                            "ae",
-                            "eg",
-                          ]}
-                          regions={[
-                            "america",
-                            "europe",
-                            "asia",
-                            "oceania",
-                            "africa",
-                          ]}
-                          buttonStyle={{
-                            borderRadius: "0.375rem 0 0 0.375rem",
-                          }}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {/* Phone Number Field */}
+                <FormField
+                  control={form.control}
+                  name="PhoneNumber"
+                  render={({ field }) => (
+                    <FormItem className="w-full mt-2">
+                      <FormLabel className="flex items-center gap-2">
+                        {lang === "English" ? "Phone Number" : "رقم الهاتف"}
+                      </FormLabel>
+                      <FormControl>
+                        <div className="phone-input-container">
+                          <PhoneInput
+                            country={"eg"}
+                            value={field.value}
+                            onChange={field.onChange}
+                            inputProps={{
+                              name: field.name,
+                              required: true,
+                              autoFocus: false,
+                            }}
+                            containerClass="phone-input-container"
+                            inputClass="phone-input"
+                            buttonClass="country-dropdown"
+                            dropdownClass="country-dropdown-list"
+                            placeholder={
+                              lang === "English"
+                                ? "Your phone number"
+                                : "رقم هاتفك"
+                            }
+                            enableSearch={true}
+                            searchPlaceholder={
+                              lang === "English"
+                                ? "Search countries"
+                                : "البحث عن الدول"
+                            }
+                            searchNotFound={
+                              lang === "English"
+                                ? "No countries found"
+                                : "لم يتم العثور على دول"
+                            }
+                            preferredCountries={[
+                              "us",
+                              "gb",
+                              "ca",
+                              "sa",
+                              "ae",
+                              "eg",
+                            ]}
+                            regions={[
+                              "america",
+                              "europe",
+                              "asia",
+                              "oceania",
+                              "africa",
+                            ]}
+                            buttonStyle={{
+                              borderRadius: "0.375rem 0 0 0.375rem",
+                            }}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               {/* Message Field */}
               <FormField

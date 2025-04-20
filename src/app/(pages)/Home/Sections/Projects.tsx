@@ -37,6 +37,12 @@ const Projects = () => {
             ? (projectCategories as unknown as ICategories[])
             : []
         );
+
+        setCategoriesData(
+          projectCategories
+            ? (projectCategories as unknown as ICategories[])
+            : []
+        );
       } catch (error) {
         setError(error instanceof Error ? error.message : String(error));
       } finally {

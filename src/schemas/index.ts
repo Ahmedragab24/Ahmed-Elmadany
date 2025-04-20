@@ -9,6 +9,7 @@ export const contactSchema = z.object({
   message: z
     .string()
     .min(10, { message: "Message must be at least 10 characters" }),
+
   PhoneNumber: z
     .string()
     .min(10, { message: "Phone number must be at least 10 characters" })

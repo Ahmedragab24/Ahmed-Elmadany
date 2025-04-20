@@ -1,6 +1,6 @@
+import React from "react";
 import CodeOffIcon from "@mui/icons-material/CodeOff";
 import { Box, Typography } from "@mui/material";
-import React from "react";
 
 const Footer = () => {
   return (

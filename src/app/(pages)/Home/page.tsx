@@ -1,13 +1,16 @@
-import Contact from "./Sections/Contact";
-import Education from "./Sections/Education";
-import Experience from "./Sections/Experience";
+
+import React from "react";
 import Hero from "./Sections/Hero";
-import Projects from "./Sections/Projects";
-import { ReviewCarousel } from "./Sections/Reviews";
-import SoftSkills from "./Sections/SoftSkills";
 import State from "./Sections/State";
 import TechSkills from "./Sections/TechSkills";
-import React from "react";
+import SoftSkills from "./Sections/SoftSkills";
+import Projects from "./Sections/Projects";
+import Education from "./Sections/Education";
+import Experience from "./Sections/Experience";
+import Contact from "./Sections/Contact";
+import { ReviewCarousel } from "./Sections/Reviews";
+
+
 
 const Home = () => {
   return (
@@ -19,7 +22,7 @@ const Home = () => {
       <Projects />
       <Education />
       <Experience />
-      <ReviewCarousel />
+      <ReviewCarousel  />
       <Contact />
     </>
   );
