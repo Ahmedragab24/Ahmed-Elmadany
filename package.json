@@ -1,0 +1,82 @@
+{
+  "name": "new-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@hookform/resolvers": "^3.9.1",
+    "@mui/icons-material": "^6.3.0",
+    "@mui/lab": "^6.0.0-beta.21",
+    "@mui/material": "^6.3.0",
+    "@radix-ui/react-accordion": "^1.2.2",
+    "@radix-ui/react-alert-dialog": "^1.1.4",
+    "@radix-ui/react-avatar": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.4",
+    "@tsparticles/engine": "^3.7.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.7.1",
+    "appwrite": "^16.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.5.1",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.469.0",
+    "next": "^15.1.1-canary.23",
+    "next-intl": "^4.0.2",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-phone-input-2": "^2.15.1",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "ui": "github:shadcn/ui",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "description": "Ahmed Ekmadany Wepsite (Front-end developer)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmedragab24/Ahmed-Elmadany.git"
+  },
+  "keywords": [
+    "front-end",
+    "website",
+    "uiux",
+    "web",
+    "build_website",
+    "create_website",
+    "ai"
+  ],
+  "author": "Ahmed Elmadany",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmedragab24/Ahmed-Elmadany/issues"
+  },
+  "homepage": "https://github.com/Ahmedragab24/Ahmed-Elmadany#readme"
+}

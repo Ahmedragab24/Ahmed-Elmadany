@@ -1,0 +1,22 @@
+import { Client, Databases } from "appwrite";
+
+const client = new Client()
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
+
+const databases = new Databases(client);
+
+export { client, databases };
+
+// Collection IDs
+export const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+export const COLLECTIONS = {
+  PROJECTS: process.env.NEXT_PUBLIC_APPWRITE_PROJECTS_COLLECTION_ID!,
+  CATEGORIES: process.env.NEXT_PUBLIC_APPWRITE_CATEGORIES_COLLECTION_ID!,
+  MESSAGES: process.env.NEXT_PUBLIC_APPWRITE_MESSAGES_COLLECTION_ID!,
+  REVIEWS: process.env.NEXT_PUBLIC_APPWRITE_REVIEWS_COLLECTION_ID!,
+  EXPERIENCE: process.env.NEXT_PUBLIC_APPWRITE_EXPERIENCE_COLLECTION_ID!,
+  STATISTICS: process.env.NEXT_PUBLIC_APPWRITE_STATISTICS_COLLECTION_ID!,
+  ABOUT: process.env.NEXT_PUBLIC_APPWRITE_ABOUT_COLLECTION_ID!,
+  CERTIFICATES: process.env.NEXT_PUBLIC_APPWRITE_CERTIFICATES_COLLECTION_ID!,
+};
