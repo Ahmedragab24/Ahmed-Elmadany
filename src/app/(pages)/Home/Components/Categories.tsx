@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ICategories, Iproject } from "@/interfaces";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 interface CategoriesProps {
   CategoriesData: ICategories[];
@@ -56,6 +56,16 @@ const Categories = ({
 
       {!isLoading && !error && CategoriesData && (
         <ul className="flex flex-wrap justify-center gap-4">
+          <li>
+            <Button
+              variant={"All" === active ? "default" : "secondary"}
+              size="sm"
+              className="text-xs md:text-sm"
+              onClick={() => handleFilter("All")}
+            >
+              All
+            </Button>
+          </li>
           {CategoriesData.map((category) => (
             <li key={category.name}>
               <Button

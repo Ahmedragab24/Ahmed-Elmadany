@@ -10,12 +10,12 @@ export const MenuLink: Menu[] = [
   {
     Title: "Home",
     ArTitle: "الرئيسية",
-    Url: "./",
+    Url: "",
   },
   {
     Title: "Contact Me",
     ArTitle: "تواصل معي",
-    Url: "./#Contact",
+    Url: "#Contact",
   },
 ];
 
@@ -23,37 +23,37 @@ export const NavLink: Menu[] = [
   {
     Title: "Technical Skills",
     ArTitle: "المهارات الفنية",
-    Url: "./#TechSkills",
+    Url: "#TechSkills",
     Icon: "Cpu",
   },
   {
     Title: "Soft Skills",
     ArTitle: "المهارات الشخصية",
-    Url: "./#SoftSkills",
+    Url: "#SoftSkills",
     Icon: "BookOpenText",
   },
   {
     Title: "Projects",
     ArTitle: "المشاريع",
-    Url: "./#Projects",
+    Url: "#Projects",
     Icon: "FolderKanban",
   },
   {
     Title: "Educations",
     ArTitle: "التعليم",
-    Url: "./#Education",
+    Url: "#Education",
     Icon: "School",
   },
   {
     Title: "Experience",
     ArTitle: "الخبرات",
-    Url: "./#Experience",
+    Url: "#Experience",
     Icon: "Blocks",
   },
   {
     Title: "Reviews",
     ArTitle: "التقييمات",
-    Url: "./#CustomerReviews",
+    Url: "#CustomerReviews",
     Icon: "Star",
   },
 ];

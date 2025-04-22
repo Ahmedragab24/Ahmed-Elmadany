@@ -35,6 +35,25 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { lang } = useLanguage();
   const isRTL = lang !== "English";
+  const [activeHash, setActiveHash] = useState("");
+
+  console.log(activeHash);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash);
+    };
+
+    // Set hash on first load
+    handleHashChange();
+
+    // Listen to hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  });
 
   // Optimized scroll handler
   const handleScroll = useCallback(() => {
@@ -89,7 +108,11 @@ export default function Navbar() {
                 <Link
                   key={Title}
                   href={Url}
-                  className="text-base font-medium text-muted-foreground transition-colors hover:text-primary"
+                  className={`text-base font-medium text-muted-foreground transition-colors hover:text-primary ${
+                    activeHash === Url
+                      ? "!text-primary"
+                      : "text-muted-foreground"
+                  }`}
                 >
                   {isRTL ? ArTitle : Title}
                 </Link>
@@ -121,7 +144,11 @@ export default function Navbar() {
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={Url}
-                                  className="flex items-center w-full p-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground"
+                                  className={`flex items-center w-full p-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground ${
+                                    activeHash === Url
+                                      ? "!text-primary"
+                                      : "text-muted-foreground"
+                                  }`}
                                 >
                                   {IconComponent && (
                                     <IconComponent className="w-4 h-4 mx-2" />
@@ -185,7 +212,11 @@ export default function Navbar() {
                       <Link
                         key={Title}
                         href={Url}
-                        className="py-2 w-fit text-base font-medium text-foreground hover:text-primary transition-colors"
+                        className={`py-2 w-fit text-base font-medium text-foreground hover:text-primary transition-colors ${
+                          activeHash === Url
+                            ? "!text-primary"
+                            : "text-muted-foreground"
+                        }`}
                         onClick={() => setIsOpen(false)}
                       >
                         {isRTL ? ArTitle : Title}
@@ -213,7 +244,11 @@ export default function Navbar() {
                                 <Link
                                   key={Title}
                                   href={Url}
-                                  className="flex items-center py-2 px-4 text-sm text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-accent"
+                                  className={`flex items-center py-2 px-4 text-sm text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-accent ${
+                                    activeHash === Url
+                                      ? "!text-primary"
+                                      : "text-muted-foreground"
+                                  }`}
                                   onClick={() => setIsOpen(false)}
                                 >
                                   {IconComponent && (
