@@ -6,6 +6,9 @@ import type { About } from "@/interfaces";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
 import {
+  BugOff,
+  Codesandbox,
+  CodeXml,
   Facebook,
   Github,
   Linkedin,
@@ -53,6 +56,107 @@ const ProfileBlob = memo(() => (
     className="mt-1 md:mt-2 z-20 sm:w-80 md:w-[50rem] lg:w-[80rem] sm:mx-auto"
   >
     <div className="relative w-[255px] sm:w-[350px] lg:w-[450px] aspect-square mx-auto">
+      {/* First icon with orbital floating animation */}
+      <motion.div
+        className="absolute top-16 left-4 sm:left-8 lg:left-14 z-30 text-primary"
+        animate={{
+          x: [0, 10, 0, -10, 0],
+          y: [0, -5, -10, -5, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeOut",
+          times: [0, 0.25, 0.5, 0.75, 1],
+        }}
+      >
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          className="p-4 bg-green-200 rounded-full shadow-md border border-primary"
+        >
+          <Codesandbox className="text-yellow-600 w-4 h-4 md:w-8 md:h-8" />
+        </motion.div>
+      </motion.div>
+
+      {/* Second icon with bounce and pulse animation */}
+      <motion.div
+        className="absolute top-28 -right-4 sm:-right-8 lg:right-10 z-30 text-primary"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1,
+        }}
+      >
+        <motion.div
+          animate={{
+            y: [0, -15, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            ease: "easeOut",
+            times: [0, 0.4, 1],
+          }}
+          className="p-4 bg-green-200 rounded-full shadow-md border border-primary"
+        >
+          <motion.div
+            animate={{ rotate: [-10, 10, -10] }}
+            transition={{
+              duration: 4,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            }}
+          >
+            <CodeXml className="text-yellow-600 w-4 h-4 md:w-8 md:h-8" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* Third icon with wave and flip animation */}
+      <motion.div
+        className="absolute bottom-14 -left-4 sm:-left-8 lg:left-4 z-30 text-primary"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div
+          animate={{
+            x: [0, 10, 0, -10, 0],
+            rotate: [0, 5, 0, -5, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: [0.45, 0.05, 0.55, 0.95],
+            times: [0, 0.25, 0.5, 0.75, 1],
+          }}
+          className="p-4 bg-green-200 rounded-full shadow-md border border-primary transition-colors duration-300"
+        >
+          <motion.div
+            animate={{
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
+            <BugOff className="text-yellow-600 w-4 h-4 md:w-8 md:h-8" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
       <svg
         viewBox="0 0 550 591"
         xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +249,7 @@ function ClientHero({ aboutData }: { aboutData: About }) {
         className={`flex flex-col gap-2 text-center lg:mt-[5rem] ${content.textAlign}`}
       >
         <div className="flex flex-col gap-1 md:gap-2">
-          <h3 className="text-xl lg:text-2xl">{content.greeting}</h3>
+          <h3 className="text-xl lg:text-2xl mt-4">{content.greeting}</h3>
           <div className="flex gap-1 md:gap-3 py-2 title font-bold justify-center md:justify-start items-center">
             <h1>{content.intro}</h1>
             <div className="text-primary">

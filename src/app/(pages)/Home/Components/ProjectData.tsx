@@ -7,12 +7,14 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Iproject } from "@/interfaces";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
 import type React from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface Iprops {
   data: Iproject[];
@@ -23,6 +25,35 @@ interface Iprops {
 const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
   const { lang } = useLanguage();
   const isRTL = lang !== "English";
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+
+  // Update the active index when the carousel changes
+  useEffect(() => {
+    if (!api) return;
+
+    const handleSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+    // Set initial index
+    setActiveIndex(api.selectedScrollSnap());
+
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [api]);
+
+  // Function to navigate to a specific slide when clicking on a pagination dot
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (api) {
+        api.scrollTo(index);
+      }
+    },
+    [api]
+  );
 
   return (
     <motion.div
@@ -54,6 +85,7 @@ const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
               align: "start",
               loop: true,
             }}
+            setApi={setApi}
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {data.map((project) => (
@@ -91,7 +123,23 @@ const ProjectData: React.FC<Iprops> = ({ data, isLoading, error }) => {
             </div>
           </Carousel>
 
-          <div className={` -mt-10 mx-2 ${isRTL ? "text-right" : "text-left"}`}>
+          {/* Pagination dots */}
+          <div className="hidden md:flex w-fit mx-auto  justify-center -mt-8 gap-2 relative z-10">
+            {data.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? "bg-primary scale-110"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className={` -mt-6 mx-2 ${isRTL ? "text-right" : "text-left"}`}>
             <h2 className="text-sm md:text-lg font-medium">
               {isRTL ? "مجموع المشاريع: " : "Total Projects: "}
               <span className="text-primary font-bold">{data.length}</span>

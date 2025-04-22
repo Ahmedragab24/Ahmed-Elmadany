@@ -7,7 +7,7 @@ const AnimatedAvatar = () => {
   return (
     <div className="relative w-64 h-64 flex items-center justify-center">
       <motion.div
-        className="absolute inset-0 rounded-full bg-secondary border-4 border-dashed border-primary shadow-md"
+        className="absolute inset-0 rounded-full bg-green-100 border-4 border-dashed border-primary shadow-md"
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
       ></motion.div>

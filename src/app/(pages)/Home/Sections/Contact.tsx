@@ -17,7 +17,7 @@ import { useLanguage } from "@/providers/LanguageContextProvider";
 import { contactSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Loader } from "lucide-react";
+import { Loader, MessageSquareText } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
@@ -90,9 +90,10 @@ const Contact = () => {
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sectionTitle"
+          className="sectionTitle flex justify-center items-center gap-2"
         >
-          {lang === "English" ? "Contact Me" : "تواصل معي"}
+          <h2>{lang === "English" ? "Contact Me" : "تواصل معي"}</h2>
+          <MessageSquareText className="text-yellow-500" />
         </motion.div>
 
         {/* Form */}
@@ -107,7 +108,7 @@ const Contact = () => {
               onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-6 mx-auto md:max-w-2xl lg:max-w-3xl"
             >
-              <div className="flex gap-6 justify-space-between items-center">
+              <div className="flex flex-col md:flex-row gap-6 justify-space-between items-center">
                 {/* Name Field */}
                 <FormField
                   control={form.control}
@@ -159,7 +160,7 @@ const Contact = () => {
                   control={form.control}
                   name="PhoneNumber"
                   render={({ field }) => (
-                    <FormItem className="w-full mt-2">
+                    <FormItem className="w-full mt-2 shadow-md">
                       <FormLabel className="flex items-center gap-2">
                         {lang === "English" ? "Phone Number" : "رقم الهاتف"}
                       </FormLabel>

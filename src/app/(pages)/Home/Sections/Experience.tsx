@@ -1,7 +1,7 @@
 "use client";
 
-
-import { ExperienceData } from "@/constants";
+import { Experience as ExperienceType } from "@/interfaces";
+import { getExperiences } from "@/lib/appwrite/api";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import Timeline from "@mui/lab/Timeline";
 import TimelineConnector from "@mui/lab/TimelineConnector";
@@ -10,12 +10,28 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import { motion as m } from "framer-motion";
+import { Blocks } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
 const Experience = () => {
   const { lang } = useLanguage();
+  const [ExperienceData, setExperienceData] = React.useState<ExperienceType[]>(
+    []
+  );
 
+  React.useEffect(() => {
+    const fetchExperienceData = async () => {
+      try {
+        const response = await getExperiences();
+        setExperienceData(response);
+      } catch (error) {
+        console.error("Error fetching experience data:", error);
+      }
+    };
+
+    fetchExperienceData();
+  }, []);
 
   return (
     <section className="section" id="Experience">
@@ -24,13 +40,14 @@ const Experience = () => {
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sectionTitle"
+          className="sectionTitle flex justify-center items-center gap-2"
         >
-          {lang == "English" ? "Experience" : "الخبرة"}
+          <h2>{lang == "English" ? "Experience" : "الخبرة"}</h2>
+          <Blocks className="text-yellow-500" />
         </m.div>
         <Timeline position="alternate-reverse">
           {ExperienceData.map((item) => (
-            <TimelineItem key={item.title}>
+            <TimelineItem key={item.$id}>
               <TimelineSeparator className="md:h-36">
                 <TimelineDot className="!bg-primary" />
                 <TimelineConnector />
@@ -51,7 +68,7 @@ const Experience = () => {
                   </p>
 
                   <Link
-                    href={item.link}
+                    href={item.link || "#"}
                     target="_blank"
                     className="underline decoration-primary text-sm md:text-md"
                   >

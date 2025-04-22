@@ -3,7 +3,7 @@ import React from "react";
 const AnimationTech = () => {
   return (
     <div className="socket">
-      <div className="gel center-gel">
+      <div className="gel center-gel border ">
         <div className="hex-brick h1"></div>
         <div className="hex-brick h2"></div>
         <div className="hex-brick h3"></div>

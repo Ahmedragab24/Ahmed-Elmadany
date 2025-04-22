@@ -22,7 +22,7 @@ export function ProjectCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="w-auto h-[330px] relative transform transition-transform duration-300 hover:scale-105">
+      <Card className="w-full h-[250px] md:h-[330px] relative transform transition-transform duration-300 hover:scale-105">
         <div className="relative w-full h-full">
           <Image
             src={image}
@@ -89,7 +89,7 @@ export function ProjectCard({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                {Technologies?.map(( tech, index) => (
+                {Technologies?.map((tech, index) => (
                   <span
                     key={index}
                     className="px-2 py-1 text-xs bg-white/20 rounded-full backdrop-blur-sm"

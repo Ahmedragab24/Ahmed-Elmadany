@@ -13,6 +13,7 @@ import type { Review } from "@/interfaces";
 import { getReviews } from "@/lib/appwrite/api";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ReviewCarousel() {
@@ -64,9 +65,11 @@ export function ReviewCarousel() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
-        className="sectionTitle"
+        className="sectionTitle flex justify-center items-center gap-2"
       >
-        {lang === "English" ? "Customer Reviews" : "آراء العملاء"}
+        <h2>{lang === "English" ? "Customer" : "العملاء"}</h2>
+        <Star className="text-yellow-500" />
+        <h2>{lang === "English" ? "Reviews" : "آراء"}</h2>
       </motion.div>
 
       <motion.div

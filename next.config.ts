@@ -9,7 +9,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    domains: ["localhost", "res.cloudinary.com"],
+    domains: ["localhost", "res.cloudinary.com", "drive.google.com"],
   },
 };
 

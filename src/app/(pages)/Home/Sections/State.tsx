@@ -5,7 +5,7 @@ import { Statistics } from "@/interfaces";
 import { getStatistics } from "@/lib/appwrite/api";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
-import { ChevronsRight, Github } from "lucide-react";
+import { ChartNoAxesCombined, ChevronsRight, Github } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -61,9 +61,10 @@ const State = () => {
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sectionTitle"
+          className="sectionTitle flex justify-center items-center gap-2"
         >
-          {lang === "English" ? "About Me" : "ْعَنِّي"}
+          <h2> {lang === "English" ? "Statistics" : "الاحصائيات"}</h2>
+          <ChartNoAxesCombined className="text-yellow-500" />
         </motion.div>
 
         <motion.div className="flex flex-col justify-center items-center gap-5 md:flex-row mb-10 md:mb-20 flex-wrap">
@@ -84,7 +85,7 @@ const State = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 + index * 0.1 }}
                 >
-                  <ChevronsRight className="hidden lg:block text-primary" />
+                  <ChevronsRight className="hidden lg:block text-yellow-500" />
                 </motion.div>
               )}
             </React.Fragment>

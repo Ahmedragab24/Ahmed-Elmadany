@@ -10,12 +10,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -23,23 +17,26 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheetSh";
 import { MenuLink, NavLink } from "@/constants";
+import { cn } from "@/lib/utils";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { Menu } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "public/Logo.png";
-import { useEffect, useState, useCallback } from "react";
+import type React from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
+  const [isOpen, setIsOpen] = useState(false);
   const { lang } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isRTL = lang !== "English";
 
-
-  // Handle scroll visibility
+  // Optimized scroll handler
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     setIsVisible(currentScrollY <= lastScrollY || currentScrollY <= 100);
@@ -49,130 +46,197 @@ export default function Navbar() {
   // Attach scroll listener
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll, isMenuOpen]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
     <nav
-      className={`bg-background shadow-md fixed top-0 left-0 w-full transition-transform duration-300 z-50 border-b border-secondary rounded-b-[2rem] md:rounded-b-[6rem]  ${
+      className={cn(
+        "fixed top-0 left-0 z-50 w-full bg-background shadow-sm border-b border-secondary transition-transform duration-300",
+        "rounded-b-lg md:rounded-b-xl",
         isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      )}
+      aria-label="Main navigation"
     >
-      <div className="container" dir={`${lang === "English" ? "ltr" : "rtl"}`}>
-        <div className="flex justify-between h-16">
-          {/* Logo and Main Navigation */}
-          <div className="flex gap-x-6">
-            {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex gap-2 justify-center items-center">
-                <Image
-                  src={Logo}
-                  alt="Logo"
-                  width={48}
-                  height={32}
-                  className="w-[40px] h-[24px] md:w-[48px] md:h-[32px]"
-                />
-                <span className="text-lg md:text-2xl font-bold text-primary">
+      <div className="container px-4 mx-auto" dir={isRTL ? "rtl" : "ltr"}>
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link
+              href="/"
+              className="flex items-center gap-2"
+              aria-label="Homepage"
+            >
+              <Image
+                src={Logo || "/placeholder.svg"}
+                alt="Logo"
+                width={48}
+                height={32}
+                className="w-10 h-6 md:w-12 md:h-8"
+                priority
+              />
+              <span className="text-lg md:text-2xl font-bold text-primary">
+                {isRTL ? "المدني" : "Elmadany"}
+              </span>
+            </Link>
+          </div>
 
-                  {lang == "English" ? "Elmadany" : "المدني"}
-                </span>
-              </Link>
-            </div>
-
-            {/* Navigation Links */}
-            <div className="hidden sm:flex sm:gap-x-6">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:gap-x-6">
+            {/* Main Menu Links */}
+            <div className="flex items-center gap-x-6">
               {MenuLink.map(({ Title, ArTitle, Url }) => (
                 <Link
                   key={Title}
                   href={Url}
-                  className="inline-flex items-center px-2 text-md font-medium text-gray-500 duration-300 hover:text-primary"
+                  className="text-base font-medium text-muted-foreground transition-colors hover:text-primary"
                 >
-                  {lang == "English" ? Title : ArTitle}
+                  {isRTL ? ArTitle : Title}
                 </Link>
               ))}
-              {/* Dropdown Menu */}
+
+              {/* About Me Dropdown */}
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-500 text-md">
-
-                      {lang == "English" ? "About me" : "عني"}
+                    <NavigationMenuTrigger className="text-base font-medium text-muted-foreground">
+                      {isRTL ? "عني" : "About me"}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="flex flex-col gap-2">
-                      {NavLink.map(({ Title, ArTitle, Url }) => (
-                        <NavigationMenuLink
-                          key={Title}
-                          href={Url}
-                          className="w-[9.55rem] text-gray-500 px-5 py-2 rounded-sm duration-300 hover:bg-primary hover:text-foreground"
-                        >
-                          {lang == "English" ? Title : ArTitle}
-                        </NavigationMenuLink>
-                      ))}
+                    <NavigationMenuContent>
+                      <ul
+                        className="grid w-[200px] gap-1 p-2"
+                        dir={isRTL ? "rtl" : "ltr"}
+                      >
+                        {NavLink.map(({ Title, ArTitle, Url, Icon }) => {
+                          // Dynamically render the icon if it exists
+                          const IconComponent = Icon
+                            ? (LucideIcons[
+                                Icon as keyof typeof LucideIcons
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                              ] as React.ComponentType<any>)
+                            : null;
+
+                          return (
+                            <li key={Title}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={Url}
+                                  className="flex items-center w-full p-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground"
+                                >
+                                  {IconComponent && (
+                                    <IconComponent className="w-4 h-4 mx-2" />
+                                  )}
+                                  {isRTL ? ArTitle : Title}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-          </div>
 
-          {/* Language and Theme Switch */}
-          <div className="hidden sm:flex sm:items-center sm:gap-x-4">
-            <SelectLang />
-            <ModeToggle />
+            {/* Language and Theme Toggle */}
+            <div className="flex items-center gap-x-3 ml-4">
+              <SelectLang />
+              <ModeToggle />
+            </div>
           </div>
 
           {/* Mobile Navigation */}
-          <div className="-mr-2 flex items-center sm:hidden">
-            <DropdownMenu open={isMenuOpen}>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsMenuOpen((prev) => !prev)}
-                >
-                  <Menu className="!w-7 !h-7 text-primary" aria-hidden="true" />
+          <div className="md:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Menu">
+                  <Menu className="h-6 w-6 text-primary" />
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-fit">
-                {MenuLink.map(({ Title, Url }) => (
-                  <DropdownMenuItem
-                    key={Title}
-                    asChild
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Link href={Url}>{Title}</Link>
-                  </DropdownMenuItem>
-                ))}
-                {/* Dropdown Submenu */}
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-foreground flex justify-center items-center">
-                      About me
-                    </AccordionTrigger>
-                    <AccordionContent className="flex flex-col text-center gap-2 bg-secondary rounded-md">
-                      {NavLink.map(({ Title, Url }) => (
-                        <Link
-                          key={Title}
-                          href={Url}
-                          className="w-32 px-5 py-2 duration-300 hover:bg-primary"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {Title}
-                        </Link>
-                      ))}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-                {/* Language and Theme Toggle */}
-                <DropdownMenuItem>
-                  <SelectLang onClick={() => setIsMenuOpen(false)} />
-                  <ModeToggle onClick={() => setIsMenuOpen(false)} />
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </SheetTrigger>
+              <SheetContent
+                side={isRTL ? "left" : "right"}
+                dir={isRTL ? "rtl" : "ltr"}
+                className="w-[80%] sm:w-[350px]"
+              >
+                <div className="flex flex-col h-full pt-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <Link
+                      href="/"
+                      className="flex items-center gap-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image
+                        src={Logo || "/placeholder.svg"}
+                        alt="Logo"
+                        width={40}
+                        height={24}
+                        className="w-8 h-5"
+                      />
+                      <span className="text-lg font-bold text-primary">
+                        {isRTL ? "المدني" : "Elmadany"}
+                      </span>
+                    </Link>
+                  </div>
+
+                  <div className="flex flex-col space-y-4">
+                    {/* Main Menu Links */}
+                    {MenuLink.map(({ Title, ArTitle, Url }) => (
+                      <Link
+                        key={Title}
+                        href={Url}
+                        className="py-2 w-fit text-base font-medium text-foreground hover:text-primary transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {isRTL ? ArTitle : Title}
+                      </Link>
+                    ))}
+
+                    {/* About Me Accordion */}
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="about-me" className="border-b-0">
+                        <AccordionTrigger className="py-2 text-base font-medium">
+                          {isRTL ? "عني" : "About me"}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="flex flex-col rounded-md bg-secondary space-y-2 ">
+                            {NavLink.map(({ Title, ArTitle, Url, Icon }) => {
+                              // Dynamically render the icon if it exists
+                              const IconComponent = Icon
+                                ? (LucideIcons[
+                                    Icon as keyof typeof LucideIcons
+                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                  ] as React.ComponentType<any>)
+                                : null;
+
+                              return (
+                                <Link
+                                  key={Title}
+                                  href={Url}
+                                  className="flex items-center py-2 px-4 text-sm text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-accent"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  {IconComponent && (
+                                    <IconComponent className="w-4 h-4 mr-2" />
+                                  )}
+                                  {isRTL ? ArTitle : Title}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+
+                  {/* Language and Theme Toggle */}
+                  <div className="mt-auto pt-4 flex items-center gap-4">
+                    <SelectLang onClick={() => setIsOpen(false)} />
+                    <ModeToggle onClick={() => setIsOpen(false)} />
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

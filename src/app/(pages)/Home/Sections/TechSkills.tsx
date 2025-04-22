@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   ChevronsLeftRightEllipsis,
   Code,
+  Cpu,
   Eclipse,
   FileCode2,
   PencilRuler,
@@ -23,9 +24,11 @@ const TechSkills = () => {
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sectionTitle"
+          className="sectionTitle flex justify-center items-center gap-2"
         >
-          {lang == "English" ? "Technical Skills" : "المهارات التقنية"}
+          <h2>{lang == "English" ? "Technical" : "التقنية"}</h2>
+          <Cpu className="text-yellow-500" />
+          <h2>{lang == "English" ? "Skills" : "المهارات"}</h2>
         </motion.div>
 
         <div className="flex flex-col justify-center gap-y-12 items-center md:flex-row  md:justify-between">
@@ -38,7 +41,7 @@ const TechSkills = () => {
           >
             <div className="flex justify-center items-center gap-x-3">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <Code className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <Code className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Programming languages</h2>
@@ -50,7 +53,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <SquareTerminal className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <SquareTerminal className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Computer Science</h2>
@@ -63,7 +66,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <Eclipse className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <Eclipse className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Project control skills</h2>
@@ -92,7 +95,7 @@ const TechSkills = () => {
           >
             <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <PencilRuler className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <PencilRuler className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Ui Designer</h2>
@@ -104,7 +107,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-3 ms-24">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <FileCode2 className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <FileCode2 className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Front-end</h2>
@@ -118,7 +121,7 @@ const TechSkills = () => {
 
             <div className="flex justify-center items-center gap-x-2">
               <div className="bg-secondary p-2  border-2 border-primary rounded-full">
-                <ChevronsLeftRightEllipsis className="text-primary w-3 h-3 md:w-6 md:h-6" />
+                <ChevronsLeftRightEllipsis className="text-yellow-500 w-3 h-3 md:w-6 md:h-6" />
               </div>
               <div>
                 <h2 className="md:text-xl">Frameworks & Libraries</h2>

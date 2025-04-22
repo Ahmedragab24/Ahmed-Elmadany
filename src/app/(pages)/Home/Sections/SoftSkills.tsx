@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { useLanguage } from "@/providers/LanguageContextProvider";
 import AlertDialogSoftSkills from "../Components/AlertDialogSoftSkills";
-import { softSkillsData } from "@/constants";
 import AnimatedAvatar from "../Components/Avatar";
-
+import { softSkillsData } from "@/constants";
+import { useLanguage } from "@/providers/LanguageContextProvider";
+import { motion } from "framer-motion";
+import { BookOpenText } from "lucide-react";
+import React from "react";
 
 const SoftSkills = () => {
   const { lang } = useLanguage();
@@ -17,9 +17,11 @@ const SoftSkills = () => {
         initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="sectionTitle"
+        className="sectionTitle flex justify-center items-center gap-2"
       >
-        {lang == "English" ? "Soft Skills" : "المهارات الشخصية"}
+        <h2> {lang == "English" ? "Soft" : "الشخصية"}</h2>
+        <BookOpenText className="text-yellow-500" />
+        <h2>{lang == "English" ? "Skills" : "المهارات"}</h2>
       </motion.div>
 
       <div className="flex flex-col w-full max-w-4xl mx-auto gap-4 lg:gap-14">

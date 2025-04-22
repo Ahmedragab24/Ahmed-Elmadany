@@ -1,9 +1,9 @@
-
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Review } from "@/interfaces";
-import { Star } from "lucide-react";
-import { memo } from "react";
+import { MoveRight, Star } from "lucide-react";
+import { memo, useState } from "react";
 
 export const CustomerReview = memo(function CustomerReview({
   name = "",
@@ -13,6 +13,8 @@ export const CustomerReview = memo(function CustomerReview({
 }: Partial<Review>) {
   // Ensure rating is within valid range
   const safeRating = Math.max(0, Math.min(5, rating));
+  const [seeMore, setSeeMore] = useState(false);
+  const toggleSeeMore = () => setSeeMore((prev) => !prev);
 
   return (
     <Card className="w-full max-w-2xl mx-auto shadow-sm bg-secondary">
@@ -39,15 +41,25 @@ export const CustomerReview = memo(function CustomerReview({
                       : "text-gray-300"
                   }`}
                   aria-hidden="true"
-
                 />
               ))}
             </div>
           </div>
         </div>
-        <p className="text-gray-600 dark:text-gray-300">{review}</p>
+        <div className="text-sm text-gray-700 dark:text-gray-200 flex flex-col items-start">
+          <p className={` ${seeMore ? "" : "line-clamp-2"}`}>{review}</p>
+          {review.length > 100 && (
+            <Button
+              variant="link"
+              onClick={toggleSeeMore}
+              className="text-primary text-sm hover:underline !p-0 group flex items-center"
+            >
+              <p>{seeMore ? "See less" : "See more"}</p>
+              <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
 });
-

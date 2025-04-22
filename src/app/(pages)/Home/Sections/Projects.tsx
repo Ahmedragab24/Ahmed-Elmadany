@@ -6,6 +6,7 @@ import { ICategories, Iproject } from "@/interfaces";
 import { getCategories, getData } from "@/lib/appwrite/api";
 import { useLanguage } from "@/providers/LanguageContextProvider";
 import { motion } from "framer-motion";
+import { FolderKanban } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const Projects = () => {
@@ -59,9 +60,10 @@ const Projects = () => {
         initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="sectionTitle"
+        className="sectionTitle flex justify-center items-center gap-2"
       >
-        {lang === "English" ? "Projects" : "المشاريع"}
+        <h2> {lang === "English" ? "Projects" : "المشاريع"}</h2>
+        <FolderKanban className="text-yellow-500" />
       </motion.div>
 
       <div className="container flex flex-col gap-10">

@@ -7,6 +7,7 @@ export interface Menu {
   Title: string;
   ArTitle: string;
   Url: string;
+  Icon?: IconType;
 }
 
 export interface Iproject {
@@ -133,6 +134,14 @@ export interface About {
   CV: string;
   email: string;
   socialMedia: { name: string; link: string; icon: string }[];
+}
+
+export interface Certificates {
+  $id?: string;
+  $createdAt?: string;
+  $updatedAt?: string;
+  name: string;
+  certificate: string;
 }
 
 export interface Certificates {

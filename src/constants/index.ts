@@ -1,4 +1,10 @@
 import { Menu, SoftSkills, Education, CustomerReviewProps } from "@/interfaces";
+import type * as LucideIcons from "lucide-react";
+
+export type IconType = keyof Omit<
+  typeof LucideIcons,
+  "createLucideIcon" | "icons"
+>;
 
 export const MenuLink: Menu[] = [
   {
@@ -18,31 +24,37 @@ export const NavLink: Menu[] = [
     Title: "Technical Skills",
     ArTitle: "المهارات الفنية",
     Url: "./#TechSkills",
+    Icon: "Cpu",
   },
   {
     Title: "Soft Skills",
     ArTitle: "المهارات الشخصية",
     Url: "./#SoftSkills",
+    Icon: "BookOpenText",
   },
   {
     Title: "Projects",
     ArTitle: "المشاريع",
     Url: "./#Projects",
+    Icon: "FolderKanban",
   },
   {
     Title: "Educations",
     ArTitle: "التعليم",
     Url: "./#Education",
+    Icon: "School",
   },
   {
     Title: "Experience",
     ArTitle: "الخبرات",
     Url: "./#Experience",
+    Icon: "Blocks",
   },
   {
     Title: "Reviews",
     ArTitle: "التقييمات",
     Url: "./#CustomerReviews",
+    Icon: "Star",
   },
 ];
 
