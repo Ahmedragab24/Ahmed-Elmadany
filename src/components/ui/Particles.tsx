@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
-import { useEffect, useMemo, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
   type ISourceOptions,
   MoveDirection,
   OutMode,
 } from "@tsparticles/engine";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import React from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const ParticlesComponent = () => {
   const [init, setInit] = useState(false);
@@ -53,7 +53,7 @@ const ParticlesComponent = () => {
       },
       particles: {
         color: {
-          value: "#22c55e",
+          value: "#eab308",
         },
         links: {
           color: "#878787",

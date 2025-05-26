@@ -1,8 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 
-const AnimationTech = () => {
+const AnimationTech = memo(() => {
   return (
-    <div className="socket">
+    <div
+      className="socket"
+      style={{ willChange: "transform", contain: "layout style paint" }}
+    >
       <div className="gel center-gel border ">
         <div className="hex-brick h1"></div>
         <div className="hex-brick h2"></div>
@@ -192,6 +195,8 @@ const AnimationTech = () => {
       </div>
     </div>
   );
-};
+});
+
+AnimationTech.displayName = "AnimationTech";
 
 export default AnimationTech;

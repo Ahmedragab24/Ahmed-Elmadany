@@ -8,6 +8,19 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Cross-browser container fix */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 @layer base {
@@ -75,6 +88,19 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+
+  /*=============== SCROLL BAR ===============*/
+  ::-webkit-scrollbar {
+    @apply bg-secondary w-[0.5rem];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-[15rem];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
 }
 
 @layer utilities {
@@ -125,7 +151,7 @@ html {
 }
 
 .socket {
-  width: 200px;
+  width: 215px;
   height: 200px;
   position: relative;
   left: 0;

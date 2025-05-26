@@ -8,6 +8,7 @@ import {
   Review,
   Statistics,
 } from "@/interfaces";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const addData = async (data: Project) => {
   return await databases.createDocument(
@@ -55,6 +56,8 @@ export async function getAbout() {
   }
 
   try {
+    // Disable caching to always get fresh data
+    noStore();
     // Since we expect only one about document, we'll get the first one
     const response = await databases!.listDocuments(
       DATABASE_ID,

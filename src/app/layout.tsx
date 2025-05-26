@@ -9,6 +9,9 @@ import ScrollUp from "@/components/ui/scrollUp";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/providers/LanguageContextProvider";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { metadata as siteMetadata } from "@/constants/metadata";
+import { MultiJsonLd } from "@/components/seo/JsonLd";
+import { personJsonLd, websiteJsonLd, profilePageJsonLd } from "@/lib/jsonld";
 
 const FontCairoPlay = Cairo_Play({
   variable: "--FontCairoPlay",
@@ -20,13 +23,8 @@ const FontCairo = Cairo({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Elmadany",
-  description:
-    "I'm Front-end Developer| My solid foundation in data structures, algorithms, object-oriented programming, and design patterns has allowed me to develop efficient, maintainable, and scalable code. I am proficient in JavaScript and TypeScript and have extensive experience working with React and Redux. I have also worked with Next.js, GraphQl, Sass, Tailwind CSS, and other front-end technologies.",
-  icons: ["/favicon-32x32.png"],
-};
-
+// Re-export metadata for Next.js
+export const metadata: Metadata = siteMetadata;
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,6 +35,11 @@ export default function RootLayout({
       <body
         className={`${FontCairo.variable} ${FontCairoPlay.variable} antialiased`}
       >
+        {/* JSON-LD Structured Data for SEO */}
+        <MultiJsonLd
+          schemas={[personJsonLd, websiteJsonLd, profilePageJsonLd]}
+        />
+
         <ParticlesComponent />
 
         <ThemeProvider

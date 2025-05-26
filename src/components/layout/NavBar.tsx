@@ -37,8 +37,6 @@ export default function Navbar() {
   const isRTL = lang !== "English";
   const [activeHash, setActiveHash] = useState("");
 
-  console.log(activeHash);
-
   useEffect(() => {
     const handleHashChange = () => {
       setActiveHash(window.location.hash);

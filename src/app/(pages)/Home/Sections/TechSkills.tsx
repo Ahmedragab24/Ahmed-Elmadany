@@ -12,10 +12,22 @@ import {
   PencilRuler,
   SquareTerminal,
 } from "lucide-react";
-import React from "react";
+import React, { memo, useMemo } from "react";
 
-const TechSkills = () => {
+// تحسين الأداء باستخدام viewport once لمنع إعادة تشغيل الأنيميشن
+const viewportConfig = { once: true, margin: "-100px" };
+
+const TechSkills = memo(() => {
   const { lang } = useLanguage();
+
+  // تخزين الترجمات مؤقتاً
+  const translations = useMemo(
+    () => ({
+      technical: lang === "English" ? "Technical" : "التقنية",
+      skills: lang === "English" ? "Skills" : "المهارات",
+    }),
+    [lang]
+  );
 
   return (
     <section className="section" id="TechSkills">
@@ -23,18 +35,20 @@ const TechSkills = () => {
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportConfig}
           transition={{ duration: 0.5 }}
           className="sectionTitle flex justify-center items-center gap-2"
         >
-          <h2>{lang == "English" ? "Technical" : "التقنية"}</h2>
+          <h2>{translations.technical}</h2>
           <Cpu className="text-yellow-500" />
-          <h2>{lang == "English" ? "Skills" : "المهارات"}</h2>
+          <h2>{translations.skills}</h2>
         </motion.div>
 
         <div className="flex flex-col justify-center gap-y-12 items-center md:flex-row  md:justify-between">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewportConfig}
             transition={{ duration: 0.8 }}
             dir="Rtl"
             className="left flex flex-col justify-center items-center space-y-5 md:space-y-14"
@@ -80,6 +94,7 @@ const TechSkills = () => {
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportConfig}
             transition={{ duration: 0.9 }}
             className="relative"
           >
@@ -89,6 +104,7 @@ const TechSkills = () => {
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewportConfig}
             transition={{ duration: 0.8 }}
             dir="Ltr"
             className="right flex flex-col justify-center items-center space-y-5 md:space-y-14"
@@ -135,6 +151,8 @@ const TechSkills = () => {
       </div>
     </section>
   );
-};
+});
+
+TechSkills.displayName = "TechSkills";
 
 export default TechSkills;

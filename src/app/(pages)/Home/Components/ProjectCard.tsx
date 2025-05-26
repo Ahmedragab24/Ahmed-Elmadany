@@ -89,7 +89,7 @@ export function ProjectCard({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                {Technologies?.map((tech, index) => (
+                {Technologies?.slice(0, 4).map((tech, index) => (
                   <span
                     key={index}
                     className="px-2 py-1 text-xs bg-white/20 rounded-full backdrop-blur-sm"

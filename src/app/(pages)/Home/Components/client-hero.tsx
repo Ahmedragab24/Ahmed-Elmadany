@@ -205,12 +205,7 @@ const ProfileBlob = memo(() => (
               transform="matrix(0.00143057 0 0 0.00226984 0.0404062 0)"
             />
           </pattern>
-          <image
-            id="imageBlob"
-            width="640"
-            height="940"
-            href="https://res.cloudinary.com/dk4yvlwr0/image/upload/v1723554998/me_vdbxlz.png"
-          />
+          <image id="imageBlob" width="640" height="940" href="/me.png" />
         </defs>
       </svg>
     </div>
